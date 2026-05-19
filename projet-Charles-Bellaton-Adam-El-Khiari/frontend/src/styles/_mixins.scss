@@ -1,0 +1,17 @@
+//mixins (blocs css) SCSS réutilisables
+
+@use 'variables' as *;
+
+//remplace les media queries répétitives
+@mixin screensize($lim-pix) {
+  @if $lim-pix == mobile {@media (max-width: $mobile) {@content;}}
+  @if $lim-pix == tablet {@media (max-width: $tablet) {@content;}}
+  @if $lim-pix == desktop {@media (min-width: $desktop) {@content;}}
+}
+
+//flex: éléments enfants se placent en ligne automatiquement
+@mixin flex-position {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}

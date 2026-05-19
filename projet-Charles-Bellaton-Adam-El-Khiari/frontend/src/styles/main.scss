@@ -1,0 +1,55 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+// Override Bootstrap
+nav.navbar               { background: $secondary !important; }
+nav.navbar .nav-link     { color: $light-gray !important; }
+nav.navbar .nav-link:hover,
+nav.navbar .nav-link.active { color: $white !important; }
+nav.navbar .navbar-brand { color: $white !important; }
+.btn-primary { background: $primary !important; border-color: $primary !important; }
+.btn-danger  { background: $danger  !important; border-color: $danger  !important; }
+
+// Footer
+footer {
+  background: $secondary;
+  color: $light-gray;
+  text-align: center;
+  padding: $space-m;
+  margin-top: auto;
+}
+
+// Hero (page d'accueil)
+.hero {
+  background: $light-gray;
+  padding: $space-xl $space-l;
+  text-align: center;
+  h1 { font-size: 2rem; margin-bottom: $space-m; }
+  p  { color: $gray; margin-bottom: $space-l; }
+}
+
+// Carte de menu — juste le override visuel, Bootstrap gère le reste
+.menu-card {
+  border: 1px solid $light-gray;
+  &__img  { height: 160px; object-fit: cover; }
+  &__desc {
+    font-size: 0.85rem;
+    color: $gray;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+}
+
+// Plat detail
+.plat-detail__img { width: 100%; height: 300px; object-fit: cover; }
+
+// Star rating
+.star               { font-size: 1.2rem; color: $gray; &--active { color: $accent; } }
+.star-rating__label { font-size: 0.85rem; color: $gray; margin-left: $space-s; }
+
+// Responsive
+@include screensize(mobile) {
+  .hero h1 { font-size: 1.5rem; }
+}
