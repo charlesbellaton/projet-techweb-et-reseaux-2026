@@ -15,6 +15,7 @@ cd backend
 python3 -m venv venv          # Windows : python -m venv venv
 source venv/bin/activate      # Windows : venv\Scripts\activate
 pip install -r requirements.txt
+python seed.py 
 python app.py
 ```
 → API disponible sur **http://localhost:5000**
@@ -31,7 +32,7 @@ npm run dev
 
 ## Description
 ### Fonctionnalités:
-
+   
 Notre site est basé sur un restaurant italien s'appelant "La Trattoria". Ce site comporte:
 - Un menu doté d'un filtre par catégorie
 - Un descriptif détaillé de chaque plat
@@ -48,6 +49,7 @@ Notre site est basé sur un restaurant italien s'appelant "La Trattoria". Ce sit
         - Description (textarea, optionnel)
         - Prix en CHF (nombre positif, obligatoire)
         - Catégorie (select parmi les catégories existantes, obligatoire)
+        - Image URL (texte, optionnel)
     - Pour le formulaire de réservation (Reservations) :
         - Nom complet (texte, obligatoire)
         - Email (email, obligatoire)
@@ -58,6 +60,7 @@ Notre site est basé sur un restaurant italien s'appelant "La Trattoria". Ce sit
 - Pour la vérification des données dans le backend (reservation.py/plats.py):
     - (reservation) Le "POST" valide les champs obligatoires (nb_personnes, email,...) et renvoie un 400 en cas d'erreur (avec un message d'erreur explicite).
     - (plats) Le "POST" vérifie que tous les champs obligatoires sont remplis et que le prix est positif, renvoyant également un 400 avec un message explicite en cas d'erreur.
+    - (les deux) Le "DELETE" vérifie que la réservation/le plat existe avant suppression, renvoyant un 404 si introuvable.
 - Nos 9 autres composants réutilisables sont:
     - Filtres (boutons) pour le menu (CategoryFilter.jsx)
     - Formateur de prix en CHF (PriceTag.jsx)
@@ -88,6 +91,7 @@ Notre site est basé sur un restaurant italien s'appelant "La Trattoria". Ce sit
     - La responsivité est gérée par le fichier mixins.scss.
     - Le mixin utilisé est "screensize" qui couvre les trois breakpoints demandés ($mobile: 480px, $tablet: 768px, $desktop: 1024px).
         - (Ces valeurs ci-dessus sont implémentés dans variables.scss, qui est ensuite importé par mixins.scss).
-    - Ce mixin est ensuite utilisé dans main.scss pour adapter l'affichage selon la taille de l'écran.
+    - Ce mixin est utilisé dans main.scss pour le breakpoint mobile.
+    - Les breakpoints tablet et desktop sont gérés par la grille Bootstrap.
 
 
